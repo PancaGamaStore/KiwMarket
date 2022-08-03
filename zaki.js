@@ -622,7 +622,7 @@ case prefix+'exif':
             }
             var listMsg = {
                 text: `Hi @${sender.split("@")[0]}`,
-                buttonText: 'Click Here!',
+                buttonText: 'Klik 2X Jika Tidak Respon!',
                 footer: `*List From ${groupName}*\n\n⏳ ${jam}\n📆 ${tanggal}`,
                 mentions: [sender],
                 sections: [{
