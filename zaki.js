@@ -546,6 +546,25 @@ let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 reply(timetext)
 break
 			
+			case prefix+'domino':
+            
+            if (!q) return replydeface(`gunakan dengan cara ${command} id\n\n_contoh_\n\n${command} 288944661`)
+            axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${lolkey}`)
+            .then(({data}) => {
+            let epep = `🔎 check nick domino 🔍
+
+id : ${args[1]}
+nick : ${data.result}`
+            replydeface(epep)
+            limitadd(sender, limit)
+            })
+            .catch((err) => {
+                console.log(color('[ error ]', 'red'), err)
+                replydeface(mess.error.api)
+                conn.sendmessage(ownernumber, { text: `${command} error : ${err}` })
+            })
+            break
+			
 			case prefix+'sticker': case prefix+'stiker': case prefix+'s':
 			    if (isImage || isQuotedImage) {
 		           var stream = await downloadContentFromMessage(msg.message.imageMessage || msg.message.extendedTextMessage?.contextInfo.quotedMessage.imageMessage, 'image')
