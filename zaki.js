@@ -10,7 +10,7 @@ const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const speed = require("performance-now");
 const request = require("request");
-const { default: axios } = require('axios');
+const axios = require('axios');
 const FormData = require("form-data");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const path = require('path');
