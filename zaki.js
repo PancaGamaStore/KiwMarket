@@ -546,6 +546,13 @@ let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 reply(timetext)
 break
 			
+		case 'mlstalk':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} 84830127/2169`)
+                    ml_id = args[0]
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${ml_id}?apikey=${apikey}`)
+                    reply(get_result.result)
+                    break	
+			
 			case prefix+'domino':
             let res = await axios.get(url)
             if (!q) return replydeface(`gunakan dengan cara ${command} id\n\n_contoh_\n\n${command} 288944661`)
