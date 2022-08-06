@@ -557,7 +557,7 @@ break
 			case prefix+'domino':
             let res = await axios.get(url)
             if (!q) return replydeface(`gunakan dengan cara ${command} id\n\n_contoh_\n\n${command} 288944661`)
-            axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${da97958043763e78d4ac2d79}`)
+            axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${lolkey}`)
             .then(({data}) => {
             let domino = `🔎 check nick domino 🔍
 
