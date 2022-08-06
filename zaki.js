@@ -547,7 +547,7 @@ let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 reply(timetext)
 break
 			
-		case 'mlstalk':
+		case 'idml':
                     if (args.length == 0) return reply(`Example: ${prefix + command} 84830127/2169`)
                     ml_id = args[0]
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${ml_id}?apikey=${apikey}`)
