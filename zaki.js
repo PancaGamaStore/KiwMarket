@@ -61,7 +61,7 @@ moment.tz.setDefault("Asia/Jakarta").locale("id");
 
 module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_db, set_left_db, db_respon_list, sewa, opengc, set_proses, set_done, set_open, set_close) => {
     try {
-        let { ownerNumber, ownerName, botName, footer, group, instagram, gamewaktu, limitCount, sticker: stc } = setting
+        let { apikey, ownerNumber, ownerName, botName, footer, group, instagram, gamewaktu, limitCount, sticker: stc } = setting
         let footxt = `${footer} © 2022`
         let thumb = await reSize(fs.readFileSync(setting.pathimg), 200, 200, [])
         const { type, quotedMsg, now, fromMe, mentioned } = msg
@@ -547,7 +547,7 @@ reply(timetext)
 break
 			
 			case prefix+'domino':
-            
+            let res = await axios.get(url)
             if (!q) return replydeface(`gunakan dengan cara ${command} id\n\n_contoh_\n\n${command} 288944661`)
             axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${lolkey}`)
             .then(({data}) => {
