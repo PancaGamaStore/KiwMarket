@@ -10,11 +10,13 @@ const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const speed = require("performance-now");
 const request = require("request");
+const { default: axios } = require('axios');
 const FormData = require("form-data");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const path = require('path');
 const ms = require("parse-ms");
 const toMS = require("ms");
+const { apikey, prefix, owner } = JSON.parse(fs.readFileSync('./config.json');
 const nou = require("node-os-utils");
 let { sizeFormatter } = require("human-readable");
 let format = sizeFormatter({
