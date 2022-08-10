@@ -262,6 +262,9 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         }
 
         async function getGcName(groupID) {
+		////// FITUR SEWA ///////
+	    _sewa.expiredCheck(setya, sewa)
+		   //////SEWAA////////
             try {
                 let data_name = await zaki.groupMetadata(groupID)
                 return data_name.subject
