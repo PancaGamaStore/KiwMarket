@@ -17,8 +17,6 @@ const {
 } = require("@adiwajshing/baileys")
 const figlet = require("figlet");
 const fs = require("fs");
-const isSewa = _sewa.checkSewaGroup(from, sewa)
-const isSewa = _sewa.expiredCheck(zaki, sewa)
 const moment = require('moment')
 const chalk = require('chalk')
 const logg = require('pino')
