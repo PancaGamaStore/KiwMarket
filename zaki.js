@@ -1,8 +1,6 @@
 "use strict";
 const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
-const isSewa = _sewa.checkSewaGroup(from, sewa);
-const isSewa = _sewa.expiredCheck(zaki, sewa);
 const axios = require('axios')
 const { apikey } = require('./config.json');
 const cheerio = require("cheerio")
@@ -52,6 +50,7 @@ const exif = new Exif()
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
 let mess = JSON.parse(fs.readFileSync('./responnya.json'));
+let isSewa = JSON.parse(fs.readFileSync('./sewa.json'));
 let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let listCmd = JSON.parse(fs.readFileSync('./database/listcmd.json'));
 let _cmd = JSON.parse(fs.readFileSync('./database/command.json'));
@@ -107,7 +106,8 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         const isGroupAdmins = groupAdmins.includes(sender)
         const isUser = pendaftar.includes(sender)
         const isAntiLink = antilink.includes(from) ? true : false
-
+	const isSewa = _sewa.checkSewaGroup(from, sewa);
+	    
         let timestamp = speed();
         let latensi = speed() - timestamp
 
