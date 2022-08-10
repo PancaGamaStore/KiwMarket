@@ -1,8 +1,8 @@
 "use strict";
 const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
-const isSewa = _sewa.checkSewaGroup(from, sewa)
-const isSewa = _sewa.expiredCheck(zaki, sewa)
+const isSewa = _sewa.checkSewaGroup(from, sewa);
+const isSewa = _sewa.expiredCheck(zaki, sewa);
 const axios = require('axios')
 const { apikey } = require('./config.json');
 const cheerio = require("cheerio")
