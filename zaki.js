@@ -2,6 +2,7 @@
 const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
 const axios = require('axios')
+const { apikey } = require('./config.json');
 const cheerio = require("cheerio")
 const moment = require("moment-timezone");
 const Dym = require("didyoumean");
@@ -62,7 +63,7 @@ moment.tz.setDefault("Asia/Jakarta").locale("id");
 
 module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_db, set_left_db, db_respon_list, sewa, opengc, set_proses, set_done, set_open, set_close) => {
     try {
-        let { apikey, ownerNumber, ownerName, botName, footer, group, instagram, gamewaktu, limitCount, sticker: stc } = setting
+        let { apikey, ownerNumber, ownerName, botName, apikey, footer, group, instagram, gamewaktu, limitCount, sticker: stc } = setting
         let footxt = `${footer} © 2022`
         let thumb = await reSize(fs.readFileSync(setting.pathimg), 200, 200, [])
         const { type, quotedMsg, now, fromMe, mentioned } = msg
@@ -473,6 +474,11 @@ const wiwik = `*MAIN MENU*
  • .owner
  • .stiker
  
+ *CEK NAME GAME*
+ • .idml
+ • .idff
+ • .idhiggs
+ 
 *STORE MENU*
  • .list
  • .addlist
@@ -533,6 +539,27 @@ const wiwik = `*MAIN MENU*
             sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, msg)
            .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: res}))
             break
+			
+	case prefix+'idff':
+        	if (!isGroup) return reply(mess.OnlyGrup)
+            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/freefire/${args[1]}?apikey=${apikey}`)
+         	 	reply(`🔎 Check Nick Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+			   break
+			   
+		case prefix+'idml':
+			if (!isGroup) return reply(mess.OnlyGrup)
+            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890/1234`)
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/mobilelegend/${args[1]}?apikey=${apikey}`)
+                reply(`🔎 Check Nick Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+			   break
+			   
+		case prefix+'idhiggs':
+			if (!isGroup) return reply(mess.OnlyGrup)
+            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${apikey}`)
+                reply(`🔎 Check Nick Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+			   break
 			
 			case prefix+'sendsesi':
 var anu = fs.readFileSync('./jo.json')
