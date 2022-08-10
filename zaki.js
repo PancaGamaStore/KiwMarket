@@ -482,7 +482,6 @@ const wiwik = `*MAIN MENU*
  • .idcodm
  • .idgenshin
  • .idsausage
- • 
  
 *STORE MENU*
  • .list
