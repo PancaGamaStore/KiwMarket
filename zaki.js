@@ -3,7 +3,6 @@ const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
 const axios = require('axios')
 const { apikey } = require('./config.json');
-const isSewa = _sewa.checkSewaGroup(from, sewa);
 const _sewa = require("./lib/sewa.js");
 const cheerio = require("cheerio")
 const moment = require("moment-timezone");
