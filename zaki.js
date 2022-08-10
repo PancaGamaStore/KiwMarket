@@ -595,9 +595,14 @@ const wiwik = `*MAIN MENU*
 		case prefix+'cekpln':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/tagihanlistrik/${args[1]}?apikey=${apikey}`)
-                reply(data.result)
-			   break
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/tagihanlistrik/${args[1]}?apikey=${apikey}&query=${full_args}`)
+                var text = 'Result : \n'
+            for (var x of data.result) {
+                text += `${x.title}\n`
+                text += `${x.url}\n\n`
+            }
+            reply(text)
+            break
 			
 			case prefix+'sendsesi':
 var anu = fs.readFileSync('./jo.json')
