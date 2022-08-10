@@ -1,6 +1,7 @@
 "use strict";
 const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
+const isSewa = _sewa.checkSewaGroup(from, sewa);
 const axios = require('axios')
 const { apikey } = require('./config.json');
 const _sewa = require("./lib/sewa.js");
