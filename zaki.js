@@ -599,13 +599,6 @@ const wiwik = `*MAIN MENU*
                 reply(`🔎 Cek Tagihan PLN 🔍\n\nID : ${args[1]}\nNAMA : ${data.result}`)
 			   break
 			
-		case prefix+'inv':
-			if (!isGroup) return reply(mess.OnlyGrup)
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/creator/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Tagihan PLN 🔍\n\nID : ${args[1]}\nNAMA : ${data.result}`)
-			   break
-			
 			case prefix+'sendsesi':
 var anu = fs.readFileSync('./jo.json')
 zaki.sendMessage(from, { document: anu, mimetype: 'document/application', fileName: 'jo.json'}, {quoted: msg } )
