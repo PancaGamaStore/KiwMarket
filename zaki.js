@@ -596,7 +596,7 @@ const wiwik = `*MAIN MENU*
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/tagihanlistrik/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Tagihan PLN 🔍\n\nID : ${args[1]}\nNAMA : ${data.result}`)
+                reply(data.result)
 			   break
 			
 			case prefix+'sendsesi':
