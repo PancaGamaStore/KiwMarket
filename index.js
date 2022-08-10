@@ -57,7 +57,7 @@ function title() {
 		width: 80,
 		whitespaceBreak: false
 	})))
-	console.log(chalk.yellow(`\n                        ${chalk.red('        [ Store - Bot]')}\n\n${chalk.italic.magenta('• Author')} : ${chalk.white('JO')}\n${chalk.italic.magenta('• YouTube')} : ${chalk.white('PANCA GAMA')}\n${chalk.italic.magenta('• Instagram')} : ${chalk.white('@pancagama.store')}\n${chalk.italic.magenta('• Caption')} : ${chalk.white('Hello Ngab')}\n`))
+	console.log(chalk.yellow(`\n                        ${chalk.red('        [ Store - Bot]')}\n\n${chalk.italic.magenta('• Author')} : ${chalk.white('JO')}\n${chalk.italic.magenta('• YouTube')} : ${chalk.white('Jo Official')}\n${chalk.italic.magenta('• Instagram')} : ${chalk.white('@pancagama.store')}\n${chalk.italic.magenta('• Caption')} : ${chalk.white('Hello Ngab')}\n`))
 }
 
 /**
