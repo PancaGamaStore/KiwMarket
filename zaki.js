@@ -1,6 +1,8 @@
 "use strict";
 const { downloadContentFromMessage } = require("@adiwajshing/baileys")
 const fs = require ("fs");
+const isSewa = _sewa.checkSewaGroup(from, sewa)
+const isSewa = _sewa.expiredCheck(zaki, sewa)
 const axios = require('axios')
 const { apikey } = require('./config.json');
 const cheerio = require("cheerio")
@@ -520,6 +522,7 @@ const wiwik = `*MAIN MENU*
 
 *OWNERS MENU*
  • .runtime
+ • .addsewa
  • .join
  • .left
  • .self
@@ -540,6 +543,14 @@ const wiwik = `*MAIN MENU*
             sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, msg)
            .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: res}))
             break
+			
+		case prefix+'addsewa':
+if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
+      if (!isOwner && !fromMe) return reply(`Command ${command} Hanya Khusus Owner`)
+      if (args.length < 1) return reply(`Penggunaan :\n*${prefix}addsewa 15k 30d*/n*Ini Hanya Contoh*`)
+      _sewa.addSewaGroup(from, args[1], sewa)
+      reply(`Success Add Sewa`)
+       break
 			
 		case prefix+'idff':
         		if (!isGroup) return reply(mess.OnlyGrup)
