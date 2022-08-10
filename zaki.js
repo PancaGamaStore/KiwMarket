@@ -262,9 +262,6 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         }
 
         async function getGcName(groupID) {
-		////// FITUR SEWA ///////
-	    _sewa.expiredCheck(setya, sewa)
-		   //////SEWAA////////
             try {
                 let data_name = await zaki.groupMetadata(groupID)
                 return data_name.subject
@@ -272,6 +269,9 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
                 return '-'
             }
         }
+	    ////// FITUR SEWA ///////
+	    _sewa.expiredCheck(zaki, sewa)
+		   //////SEWAA////////
 
         async function sendStickerFromUrl(from, url, packname1 = stc.packname, author1 = stc.author, options = {}) {
         	var names = Date.now() / 10000;
