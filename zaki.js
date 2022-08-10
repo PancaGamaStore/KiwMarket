@@ -482,8 +482,7 @@ const wiwik = `*MAIN MENU*
  • .idcodm
  • .idgenshin
  • .idsausage
- • .cekpln
- • .inv
+ • 
  
 *STORE MENU*
  • .list
@@ -595,13 +594,12 @@ const wiwik = `*MAIN MENU*
 		case prefix+'cekpln':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/tagihanlistrik/${args[1]}?apikey=${apikey}&query=${full_args}`)
-                var text = 'Result : \n'
-            for (var x of data.result) {
-                text += `${x.title}\n`
-                text += `${x.url}\n\n`
-            }
-            reply(text)
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/tagihanlistrik/${args[1]}?apikey=${apikey}`)
+             let = `*INFO TAGIHAN LISTRIK*
+		     ID : ${args[1]}
+		     NAMA : ${data.result.name}
+		     TAGIHAN : ${data.result.amount}`
+	     reply()
             break
 			
 			case prefix+'sendsesi':
