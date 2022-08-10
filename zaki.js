@@ -50,7 +50,7 @@ const exif = new Exif()
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
 let mess = JSON.parse(fs.readFileSync('./responnya.json'));
-let isSewa = JSON.parse(fs.readFileSync('./sewa.json'));
+let isSewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
 let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let listCmd = JSON.parse(fs.readFileSync('./database/listcmd.json'));
 let _cmd = JSON.parse(fs.readFileSync('./database/command.json'));
