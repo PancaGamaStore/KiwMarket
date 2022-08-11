@@ -478,6 +478,7 @@ if (!isCmd && isGroup && checkResponGroup(from, chats, db_respon_group)) {
 const wiwik = `*MAIN MENU*
  • .owner
  • .stiker
+ • .ceksewa
  
  *CEK NAME GAME*
  • .idml
@@ -499,8 +500,8 @@ const wiwik = `*MAIN MENU*
  • .bagi
 
 *PROSES/DONE*
- • proses < reply chat >
- • done < reply chat >
+ • .proses < reply chat >
+ • .done < reply chat >
  • .setproses
  • .changeproses
  • .delsetproses
