@@ -568,49 +568,49 @@ case  prefix+'checksewa': case prefix+'ceksewa':
         		if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/freefire/${args[1]}?apikey=${apikey}`)
-         	 	reply(`🔎 Cek Nick Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+         	 	reply(`🔎 Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idml':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890/1234`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/mobilelegend/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idhiggs':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 		
 		case prefix+'idpubg':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/pubg/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick PUBG Mobile 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 PUBG MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idcodm':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/codm/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick COD Mobile 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 COD MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idgenshin':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/genshin/username/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick Genshin Impact 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 Genshin Impact 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idsausage':
 			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/sausageman/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Cek Nick Sausage Man 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                reply(`🔎 Sausage Man 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 			case prefix+'sendsesi':
