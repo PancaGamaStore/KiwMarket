@@ -528,6 +528,7 @@ const wiwik = `*MAIN MENU*
 *OWNERS MENU*
  • .runtime
  • .addsewa
+ • .delsewa
  • .join
  • .left
  • .self
@@ -566,6 +567,8 @@ if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
             break
 			
 		case prefix + 'delsewa':
+	if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
+      if (!isOwner && !fromMe) return reply(`Command ${command} Hanya Khusus Owner`)
               if (!isSewa) return reply(`Bot tidak disewa di Grup ini`)
               sewa.splice(_sewa.getSewaPosition(from, sewa), 1)
               fs.writeFileSync('./database/sewa.json', JSON.stringify(sewa))
