@@ -97,8 +97,8 @@ const expiredCheck = (zaki, _dir) => {
         })
         if (position !== null) {
             let txt = `Waktu Sewa Mu Telah Habis Silahkan Perpanjang Ke Owner Wa : https://wa.me/6287734276016`
-            setya.sendMessage(_dir[position].id, { text: txt })
-            setya.groupLeave(_dir[position].id)
+            zaki.sendMessage(_dir[position].id, { text: txt })
+            zaki.groupLeave(_dir[position].id)
             _dir.splice(position, 1)
             fs.writeFileSync('./database/sewa.json', JSON.stringify(_dir, null, 2))
         }
