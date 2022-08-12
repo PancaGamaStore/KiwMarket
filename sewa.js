@@ -87,7 +87,7 @@ const checkSewaGroup = (gid, _dir) => {
  * @param {object} WAConnection
  * @param {Object} _dir 
  */
-const expiredCheck = (zaki, _dir) => {
+const expiredCheck = (setya, _dir) => {
     setInterval(() => {
         let position = null
         Object.keys(_dir).forEach((i) => {
