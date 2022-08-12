@@ -557,13 +557,20 @@ if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
       reply(`Success Add Sewa`)
        break
 
-case  prefix+'checksewa': case prefix+'ceksewa':
+		case  prefix+'checksewa': case prefix+'ceksewa':
             if (!isGroup) return reply(mess.OnlyGrup)
             if (!isSewa) return reply(`Bot tidak di sewa group ini!`)
             let ceksewa = ms(_sewa.getSewaExpired(from, sewa) - Date.now())
             let sewanya = `*Expire :* ${ceksewa.days} Hari ${ceksewa.hours} Jam ${ceksewa.minutes} Menit`
             reply(sewanya)
             break
+			
+		case prefix + 'delsewa':
+              if (!isSewa) return reply(`Bot tidak disewa di Grup ini`)
+              sewa.splice(_sewa.getSewaPosition(from, sewa), 1)
+              fs.writeFileSync('./database/sewa.json', JSON.stringify(sewa))
+              reply(`Sukses`)
+              break
 			
 		case prefix+'idff':
         		if (!isGroup) return reply(mess.OnlyGrup)
