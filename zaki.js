@@ -12,7 +12,7 @@ const imageToBase64 = require('image-to-base64');
 const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const speed = require("performance-now");
-const isSewa = _sewa.checkSewaGroup(from, sewa);
+const isSewa = _sewa.checkSewaGroup(data.id, sewa);
 const request = require("request");
 const FormData = require("form-data");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
