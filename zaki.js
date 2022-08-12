@@ -12,7 +12,6 @@ const imageToBase64 = require('image-to-base64');
 const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const speed = require("performance-now");
-const isSewa = _sewa.checkSewaGroup(data.id, sewa);
 const request = require("request");
 const FormData = require("form-data");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
@@ -108,6 +107,7 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         const isGroupAdmins = groupAdmins.includes(sender)
         const isUser = pendaftar.includes(sender)
         const isAntiLink = antilink.includes(from) ? true : false
+	const isSewa = _sewa.checkSewaGroup(from, sewa)
 	    
         let timestamp = speed();
         let latensi = speed() - timestamp
