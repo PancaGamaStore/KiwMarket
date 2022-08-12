@@ -554,7 +554,7 @@ const wiwik = `*MAIN MENU*
 if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
       if (!isOwner && !fromMe) return reply(`Command ${command} Hanya Khusus Owner`)
       if (args.length < 1) return reply(`Penggunaan :\n*${prefix}addsewa 15k 30d*/n*Ini Hanya Contoh*`)
-      _sewa.addSewaGroup(from, args[1], sewa)
+      _sewa.addSewaGroup(from, args[0], sewa)
       reply(`Success Add Sewa`)
        break
 
