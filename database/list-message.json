@@ -64,10 +64,24 @@
    },
    {
       "id": "6287734276016-1609169902@g.us",
+      "key": "CV PULSA",
+      "response": "*Convert Pulsa*\n\n*Format transaksi*\n\nContoh :\n*CV PULSA Rp50.000 AXIS KE DANA*\n\nMinimal Rp10.000 untuk cv pulsa\n\n*Selama Proses Transaksi Jangan Melakukan Spam Chat Ya ka*\n\n*STATUS*\n> TELKOMSEL ❌\n> XL/AXIS ✅\n\n> HANYA MENERIMA PULSA TRANSFER\n> TIDAK MENERIMA PULSA REGULER/ISI ULANG DENGAN ALASAN APAPUN, MAKSA TF = HANGUS\n\n*CATATAN*\n • Dana biaya transfer gratis\n • ShopeePay, Gopay, OVO, LinkAja fee = 1.000\n • All bank fee 6.500\n\n*RATE CV*\n\nTELKOMSEL \nRATE 0.78\n\nXL/AXIS\nRATE 0.80\n\n*CARA HITUNG RATE*\nContoh mau cv pulsa Rp200.000\nRp200.000 x 0.8 = Rp160.000\nJadi cv pulsa Rp200.000 dapat *_Rp160.000_*\n\n\n*SILAHKAN TRANSFER KE NOMOR INI DAN KIRIM BUKTI TRANSFER*\n\nTELKOMSEL : -\nXL/AXIS : 087734276016\n\n*DAN KIRIM NO REKENING/E-WALLET ANDA*",
+      "isImage": false,
+      "image_url": "-"
+   },
+   {
+      "id": "6287734276016-1609169902@g.us",
       "key": "PEMBAYARAN",
       "response": "*_PEMBAYARAN_* 💳\n\n```BNI :\n1285833348\nMANDIRI :\n1840002851986\nJAGO :\n106334061111\nDANA :\n087734276016\nSHOPEPAY :\n087734276016```\n\n*Note📌*\n-> Rekening & DANA ( A/N *Wahyu Johandono* )\n-> ShopeePay ( A/N *panca.gama.id* )",
       "isImage": false,
       "image_url": "https://i.ibb.co/nD4sqYK/Whats-App-Image-2022-08-03-at-21-48-14.jpg"
+   },
+   {
+      "id": "6287734276016-1609169902@g.us",
+      "key": "QRIS ALL PAY",
+      "response": "*Scan Untuk Membayar*",
+      "isImage": true,
+      "image_url": "https://telegra.ph/file/8833314e1ac70ff325a0d.jpg"
    },
    {
       "id": "6285161286162-1621589417@g.us",
