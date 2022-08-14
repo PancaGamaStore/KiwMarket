@@ -555,6 +555,7 @@ const wiwik = `*MAIN MENU*
 			
 	case 'bot': case prefix+'bot':
 		reply(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
+			break
 			
 	case prefix+'sewa':
 reply(`*➛ JASA BOT BY JO OFFICIAL 🏷️*
