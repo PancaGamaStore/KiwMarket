@@ -480,6 +480,8 @@ const wiwik = `*MAIN MENU*
  • .owner
  • .stiker
  • .ceksewa
+ • .bot (memanggil bot)
+ • .sewa
  
  *CEK NAME GAME*
  • .idml
@@ -540,6 +542,7 @@ const wiwik = `*MAIN MENU*
         
 //━━━━━━━━━━━━━━━[ MAIN MENU ]━━━━━━━━━━━━━━━━━//
         case prefix+'menu':
+			case 'menu':
                 case prefix+'help':
                    var media = await reSize(setting.pathimg, 300, 200)
                    zaki.sendMessage(from, { caption: wiwik, location: { jpegThumbnail: media }, templateButtons: buttonsDefault, footer: footer, mentions: [sender] }, { quoted: msg })
@@ -549,6 +552,32 @@ const wiwik = `*MAIN MENU*
             sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, msg)
            .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: res}))
             break
+			
+	case 'bot': case prefix+'bot':
+		reply(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
+			
+	case prefix+'sewa':
+reply(`*➛ JASA BOT BY JO OFFICIAL 🏷️*
+_❏ Jadibot : 30k/Bulan_
+_❏ Script Bot : 55k-100k_
+_❏ Sewa Bot : 10K/Bulan_
+
+➛ *Keuntungan Jadi Bot 🛡️*
+_⊳ Tinggal Scan_
+_⊳ Validasi ID Game_
+_⊳ Online 24 Jam_
+_⊳ Fast Respon_
+_⊳ Data Mati Tetep Online_
+_⊳ Bot No Internet_
+_⊳ Anti Delay_
+_⊳ Hemat Kuota_
+_⊳ Bisa Req NamaBot & Owner_
+
+*Pembayaran  Via 💳*
+_Dana/Bank/Qris_
+
+Hubungi Admin [ wa.me/6287734276016 ]`)
+break
 			
 		case prefix+'addsewa':
 if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
