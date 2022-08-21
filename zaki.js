@@ -606,49 +606,42 @@ if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
               break
 			
 		case prefix+'idff':
-        		if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/freefire/${args[1]}?apikey=${apikey}`)
          	 	reply(`🔎 Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idml':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890/1234`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/mobilelegend/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idhiggs':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 		
 		case prefix+'idpubg':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/pubg/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 PUBG MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idcodm':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/codm/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 COD MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idgenshin':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/genshin/username/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 Genshin Impact 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idsausage':
-			if (!isGroup) return reply(mess.OnlyGrup)
             if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/sausageman/${args[1]}?apikey=${apikey}`)
                 reply(`🔎 Sausage Man 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
@@ -662,7 +655,7 @@ reply(`_Sedang Mengirim Document_\n_Nama Session : ${setting.sessionName}.json_\
 break
 			
 		case prefix+'runtime':
-case prefix+'time':
+case prefix+'ping':
 let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 reply(timetext)
 break
