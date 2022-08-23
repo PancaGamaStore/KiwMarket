@@ -560,7 +560,7 @@ const wiwik = `*MAIN MENU*
 			
 	case 'bot': case prefix+'bot':
 		replyt(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
-	zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, {quoted: troli })
+	zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 			break
 			
 	case prefix+'sewa':
@@ -584,7 +584,7 @@ _⊳ Bisa Req NamaBot & Owner_
 _Dana/Bank/Qris_
 
 Hubungi Admin [ wa.me/6287734276016 ]`)
-zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
+zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 break
 			
 		case prefix+'addsewa':
@@ -666,7 +666,7 @@ break
 case prefix+'ping':
 let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 replyt(timetext)
-zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
+zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 break
 			
 			case prefix+'sticker': case prefix+'stiker': case prefix+'s':
