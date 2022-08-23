@@ -560,7 +560,7 @@ const wiwik = `*MAIN MENU*
 			
 	case 'bot': case prefix+'bot':
 		replyt(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
-	zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
+	zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, {quoted: troli })
 			break
 			
 	case prefix+'sewa':
