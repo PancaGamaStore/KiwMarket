@@ -17,6 +17,7 @@ const FormData = require("form-data");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const path = require('path');
 const ms = require("parse-ms");
+const Mfake = fs.readFileSync ('./media/logo.jpg');
 const toMS = require("ms");
 const nou = require("node-os-utils");
 let { sizeFormatter } = require("human-readable");
@@ -51,6 +52,7 @@ const exif = new Exif()
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
 let mess = JSON.parse(fs.readFileSync('./responnya.json'));
+let fakeimage = fs.readFileSync("./media/logo.jpg")
 let sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
 let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let listCmd = JSON.parse(fs.readFileSync('./database/listcmd.json'));
@@ -240,7 +242,10 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         const reply = (teks) => {
         	return zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: msg })
         }
-        
+        const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 50, status: 200, thumbnail: fakeimage, surface: 200, orderTitle: 'zaki', sellerJid: '0@s.whatsapp.net'} } }
+        const replyt = (teks) => {
+        	return zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
+        }
         const fkontak = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./media/logo.jpg')}}}
         const textImg = (teks) => {
         	return zaki.sendMessage(from, { text: teks, jpegThumbnail: fs.readFileSync(setting.pathimg), mentions: parseMention(teks) }, { quoted: msg })
@@ -378,11 +383,11 @@ if (!isCmd && isGroup && checkResponGroup(from, chats, db_respon_group)) {
             var get_data_respon = getDataResponList(from, chats, db_respon_list)
             if (get_data_respon.isImage === false) {
                 zaki.sendMessage(from, { text: sendResponList(from, chats, db_respon_list) }, {
-                    quoted: msg
+                    quoted: troli
                 })
             } else {
                 zaki.sendMessage(from, { image: await getBuffer(get_data_respon.image_url), caption: get_data_respon.response }, {
-                    quoted: msg
+                    quoted: troli
                 })
             }
         }
@@ -549,16 +554,17 @@ const wiwik = `*MAIN MENU*
                    break
         
         case prefix+'owner': case prefix+'dev':
-            sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, msg)
-           .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: res}))
+            sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, troli)
+           .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: troli}))
             break
 			
 	case 'bot': case prefix+'bot':
-		reply(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
+		replyt(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
+	zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
 			break
 			
 	case prefix+'sewa':
-reply(`*➛ JASA BOT BY JO OFFICIAL 🏷️*
+replyt(`*➛ JASA BOT BY JO OFFICIAL 🏷️*
 _❏ Jadibot : 30k/Bulan_
 _❏ Script Bot : 55k-100k_
 _❏ Sewa Bot : 10K/Bulan_
@@ -578,6 +584,7 @@ _⊳ Bisa Req NamaBot & Owner_
 _Dana/Bank/Qris_
 
 Hubungi Admin [ wa.me/6287734276016 ]`)
+zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
 break
 			
 		case prefix+'addsewa':
@@ -649,15 +656,17 @@ if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
 			
 			case prefix+'sendsesi':
 var anu = fs.readFileSync('./jo.json')
-zaki.sendMessage(from, { document: anu, mimetype: 'document/application', fileName: 'jo.json'}, {quoted: msg } )
-reply(`*Note :*\n_Session Bot Bersifat Untuk Pribadi Dari Owner Maupun Bot, Tidak Untuk User Bot Ataupun Pengguna Bot._`)
-reply(`_Sedang Mengirim Document_\n_Nama Session : ${setting.sessionName}.json_\n_Mohon Tunggu Sebentar..._`)
+zaki.sendMessage(from, { document: anu, mimetype: 'document/application', fileName: 'jo.json'}, {quoted: troli } )
+replyt(`*Note :*\n_Session Bot Bersifat Untuk Pribadi Dari Owner Maupun Bot, Tidak Untuk User Bot Ataupun Pengguna Bot._`)
+replyt(`_Sedang Mengirim Document_\n_Nama Session : ${setting.sessionName}.json_\n_Mohon Tunggu Sebentar..._`)
+zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
 break
 			
 		case prefix+'runtime':
 case prefix+'ping':
 let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
-reply(timetext)
+replyt(timetext)
+zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
 break
 			
 			case prefix+'sticker': case prefix+'stiker': case prefix+'s':
@@ -696,7 +705,7 @@ break
 				  .on("error", console.error)
 				  .on("end", () => {
 				    exec(`webpmux -set exif ./sticker/data.exif ./${rand2} -o ./${rand2}`, async (error) => {
-				      zaki.sendMessage(from, { sticker: fs.readFileSync(`./${rand2}`) }, { quoted: msg })
+				      zaki.sendMessage(from, { sticker: fs.readFileSync(`./${rand2}`) }, { quoted: troli })
 				      
 					  fs.unlinkSync(`./${rand1}`)
 				      fs.unlinkSync(`./${rand2}`)
@@ -743,7 +752,7 @@ case prefix+'exif':
                     title: groupName, rows: arr_rows
                 }]
             }
-            zaki.sendMessage(from, listMsg)
+            zaki.sendMessage(from, listMsg, {quoted : troli})
             break
         case prefix+'addlist':
             if (!isGroup) return reply(mess.OnlyGrup)
@@ -995,96 +1004,96 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
             }
             break
         case prefix+'open': case prefix+'buka':
-            if (!isGroup) return reply(mess.OnlyGrup)
-		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-		    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+		    if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+		    if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
             zaki.groupSettingUpdate(from, 'not_announcement')
             .then((res) => {
-                const textOpen = getTextSetOpen(from, set_open);
+                const textOpen = getTextSetOpen(from, set_open, {quoted:troli});
                 if (textOpen !== undefined) {
-                    reply(textOpen);
+                    replyt(textOpen);
                 } else {
-                    reply(`Sukses mengizinkan semua peserta dapat mengirim pesan ke grup ini`)
+                    replyt(`Sukses mengizinkan semua peserta dapat mengirim pesan ke grup ini`)
                 }
             })
-            .catch((err) => reply('Error'))
+            .catch((err) => replyt('Error'))
 			break
         case prefix+'close': case prefix+'tutup':
-            if (!isGroup) return reply(mess.OnlyGrup)
-		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-		    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+		    if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+		    if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
 		    zaki.groupSettingUpdate(from, 'announcement')
 		    .then((res) => {
-                const textClose = getTextSetClose(from, set_close);
+                const textClose = getTextSetClose(from, set_close, {quoted:troli});
                 if (textClose !== undefined) {
-                    reply(textClose);
+                    replyt(textClose);
                 } else {
-                    reply(`Sukses mengizinkan hanya admin yang dapat mengirim pesan ke grup ini`)
+                    replyt(`Sukses mengizinkan hanya admin yang dapat mengirim pesan ke grup ini`)
                 }
             })
-            .catch((err) => reply('Error'))
+            .catch((err) => replyt('Error'))
 		    break
         case prefix+'add':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins) return reply(mess.GrupAdmin)
-            if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-            if (groupMembers.length == 257) return reply(`Anda tidak dapat menambah peserta, karena Grup sudah penuh!`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins) return replyt(mess.GrupAdmin)
+            if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
+            if (groupMembers.length == 257) return replyt(`Anda tidak dapat menambah peserta, karena Grup sudah penuh!`)
             var mems = []
             groupMembers.map( i => mems.push(i.id) )
             var number;
             if (args.length > 1) {
                 number = q.replace(/[^0-9]/gi, '')+"@s.whatsapp.net"
                 var cek = await zaki.onWhatsApp(number)
-                if (cek.length == 0) return reply(`Masukkan nomer yang valid dan terdaftar di WhatsApp`)
-                if (mems.includes(number)) return reply(`Nomer tersebut sudah berada didalam grup!`)
-                zaki.groupParticipantsUpdate(from, [number], "add")
-                .then( res => reply(jsonformat(res)))
-                .catch((err) => reply(jsonformat(err)))
+                if (cek.length == 0) return replyt(`Masukkan nomer yang valid dan terdaftar di WhatsApp`)
+                if (mems.includes(number)) return replyt(`Nomer tersebut sudah berada didalam grup!`)
+                zaki.groupParticipantsUpdate(from, [number], "add", {quoted:troli})
+                .then( res => replyt(jsonformat(res)))
+                .catch((err) => replyt(jsonformat(err)))
             } else if (isQuotedMsg) {
                 number = quotedMsg.sender
                 var cek = await zaki.onWhatsApp(number)
-                if (cek.length == 0) return reply(`Peserta tersebut sudah tidak terdaftar di WhatsApp`)
-                if (mems.includes(number)) return reply(`Nomer tersebut sudah berada didalam grup!`)
-                zaki.groupParticipantsUpdate(from, [number], "add")
+                if (cek.length == 0) return replyt(`Peserta tersebut sudah tidak terdaftar di WhatsApp`)
+                if (mems.includes(number)) return replyt(`Nomer tersebut sudah berada didalam grup!`)
+                zaki.groupParticipantsUpdate(from, [number], "add", {quoted:troli})
                 .then( res => reply(jsonformat(res)))
                 .catch((err) => reply(jsonformat(err)))
             } else {
-                reply(`Kirim perintah ${command} nomer atau balas pesan orang yang ingin dimasukkan`)
+                replyt(`Kirim perintah ${command} nomer atau balas pesan orang yang ingin dimasukkan`)
             }
             break
         case prefix+'kick':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins) return reply(mess.GrupAdmin)
-            if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins) return replyt(mess.GrupAdmin)
+            if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
             var number;
 			if (mentionUser.length !== 0) {
                 number = mentionUser[0]
-                zaki.groupParticipantsUpdate(from, [number], "remove")
-                .then( res => reply(jsonformat(res)))
-                .catch((err) => reply(jsonformat(err)))
+                zaki.groupParticipantsUpdate(from, [number], "remove", {quoted:troli})
+                .then( res => replyt(jsonformat(res)))
+                .catch((err) => replyt(jsonformat(err)))
             } else if (isQuotedMsg) {
                 number = quotedMsg.sender
-                zaki.groupParticipantsUpdate(from, [number], "remove")
-                .then( res => reply(jsonformat(res)))
-                .catch((err) => reply(jsonformat(err)))
+                zaki.groupParticipantsUpdate(from, [number], "remove", {quoted:troli})
+                .then( res => replyt(jsonformat(res)))
+                .catch((err) => replyt(jsonformat(err)))
             } else {
-                reply(`Tag atau balas pesan orang yang ingin dikeluarkan dari grup`)
+                replyt(`Tag atau balas pesan orang yang ingin dikeluarkan dari grup`)
             }
             break
         case prefix+'promote': case prefix+'pm':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins) return reply(mess.GrupAdmin)
-            if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins) return replyt(mess.GrupAdmin)
+            if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
             if (mentionUser.length !== 0) {
-                zaki.groupParticipantsUpdate(from, [mentionUser[0]], "promote")
+                zaki.groupParticipantsUpdate(from, [mentionUser[0]], "promote", {quoted:troli})
                 .then( res => { mentions(`Sukses menjadikan @${mentionUser[0].split("@")[0]} sebagai admin`, [mentionUser[0]], true) })
-                .catch(() => reply(mess.error.api))
+                .catch(() => replyt(mess.error.api))
             } else if (isQuotedMsg) {
-                zaki.groupParticipantsUpdate(from, [quotedMsg.sender], "promote")
+                zaki.groupParticipantsUpdate(from, [quotedMsg.sender], "promote", {quoted:troli})
                 .then( res => { mentions(`Sukses menjadikan @${quotedMsg.sender.split("@")[0]} sebagai admin`, [quotedMsg.sender], true) })
-                .catch(() => reply(mess.error.api))
+                .catch(() => replyt(mess.error.api))
             } else {
-                reply(`Tag atau balas pesan member yang ingin dijadikan admin`)
+                replyt(`Tag atau balas pesan member yang ingin dijadikan admin`)
             }
             break
         case prefix+'demote':
@@ -1117,7 +1126,7 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
 		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
             let mem = [];
             groupMembers.map( i => mem.push(i.id) )
-            zaki.sendMessage(from, { text: q ? q : '', mentions: mem })
+            zaki.sendMessage(from, { text: q ? q : '', mentions: mem }, { quoted: troli})
             break
         case prefix+'delete': case prefix+'del': case prefix+'d':
             if (!isGroup) return reply(mess.OnlyGrup)
