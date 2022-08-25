@@ -549,7 +549,7 @@ const wiwik = `*MAIN MENU*
         case prefix+'menu':
 			case 'menu':
                 case prefix+'help':
-                   var media = await reSize(setting.pathimg, 300, 200)
+                   var media = await reSize(setting.pathimg, 300, 300)
                    zaki.sendMessage(from, { caption: wiwik, location: { jpegThumbnail: media }, templateButtons: buttonsDefault, footer: footer, mentions: [sender] }, { quoted: msg })
                    break
         
