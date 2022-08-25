@@ -560,7 +560,6 @@ const wiwik = `*MAIN MENU*
 			
 	case 'bot': case prefix+'bot':
 		replyt(`*Apa cok panggil" , Ketik Menu Jika Perlu Bantuan*`)
-	zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 			break
 			
 	case prefix+'sewa':
@@ -584,74 +583,73 @@ _⊳ Bisa Req NamaBot & Owner_
 _Dana/Bank/Qris_
 
 Hubungi Admin [ wa.me/6287734276016 ]`)
-zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 break
 			
 		case prefix+'addsewa':
 if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
-      if (!isOwner && !fromMe) return reply(`Command ${command} Hanya Khusus Owner`)
-      if (args.length < 1) return reply(`Penggunaan :\n*${prefix}addsewa 15k 30d*/n*Ini Hanya Contoh*`)
+      if (!isOwner && !fromMe) return replyt(`Command ${command} Hanya Khusus Owner`)
+      if (args.length < 1) return replyt(`Penggunaan :\n*${prefix}addsewa 15k 30d*/n*Ini Hanya Contoh*`)
       _sewa.addSewaGroup(from, args[1], sewa)
-      reply(`Success Add Sewa`)
+      replyt(`Success Add Sewa`)
        break
 
 		case  prefix+'checksewa': case prefix+'ceksewa':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isSewa) return reply(`Bot tidak di sewa group ini!`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isSewa) return replyt(`Bot tidak di sewa group ini!`)
             let ceksewa = ms(_sewa.getSewaExpired(from, sewa) - Date.now())
             let sewanya = `*Expire :* ${ceksewa.days} Hari ${ceksewa.hours} Jam ${ceksewa.minutes} Menit`
-            reply(sewanya)
+            replyt(sewanya)
             break
 			
 		case prefix + 'delsewa':
-	if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
-      if (!isOwner && !fromMe) return reply(`Command ${command} Hanya Khusus Owner`)
-              if (!isSewa) return reply(`Bot tidak disewa di Grup ini`)
+	if (!isOwner) return replyt('*Fitur ini hanya bisa digunakan oleh owner bot!*')
+      if (!isOwner && !fromMe) return replyt(`Command ${command} Hanya Khusus Owner`)
+              if (!isSewa) return replyt(`Bot tidak disewa di Grup ini`)
               sewa.splice(_sewa.getSewaPosition(from, sewa), 1)
               fs.writeFileSync('./database/sewa.json', JSON.stringify(sewa))
-              reply(`Sukses`)
+              replyt(`Sukses`)
               break
 			
 		case prefix+'idff':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/freefire/${args[1]}?apikey=${apikey}`)
-         	 	reply(`🔎 Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+         	 	replyt(`🔎 Free Fire 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idml':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890/1234`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890/1234`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/mobilelegend/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 Mobile Legends 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			   
 		case prefix+'idhiggs':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/higghdomino/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 Higgs Domino 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 		
 		case prefix+'idpubg':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/pubg/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 PUBG MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 PUBG MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idcodm':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/codm/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 COD MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 COD MOBILE 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idgenshin':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/genshin/username/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Genshin Impact 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 Genshin Impact 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 		case prefix+'idsausage':
-            if (args.length == 1) return reply(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
+            if (args.length == 1) return replyt(`gunakan dengan cara ${command} *id*\n\n_contoh_\n\n${command} 1234567890`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/sausageman/${args[1]}?apikey=${apikey}`)
-                reply(`🔎 Sausage Man 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
+                replyt(`🔎 Sausage Man 🔍\n\nID : ${args[1]}\nNICK : ${data.result}`)
 			   break
 			
 			case prefix+'sendsesi':
@@ -659,7 +657,6 @@ var anu = fs.readFileSync('./jo.json')
 zaki.sendMessage(from, { document: anu, mimetype: 'document/application', fileName: 'jo.json'}, {quoted: troli } )
 replyt(`*Note :*\n_Session Bot Bersifat Untuk Pribadi Dari Owner Maupun Bot, Tidak Untuk User Bot Ataupun Pengguna Bot._`)
 replyt(`_Sedang Mengirim Document_\n_Nama Session : ${setting.sessionName}.json_\n_Mohon Tunggu Sebentar..._`)
-zaki.sendMessage(from, {teks, mentions: parseMention(teks) }, {quoted: troli })
 break
 			
 		case prefix+'runtime':
@@ -715,7 +712,7 @@ break
 				 .toFormat('webp')
 				 .save(`${rand2}`)
                 } else {
-			       reply(`Kirim gambar/vidio dengan caption ${command} atau balas gambar/vidio yang sudah dikirim\nNote : Maximal vidio 10 detik!`)
+			       replyt(`Kirim gambar/vidio dengan caption ${command} atau balas gambar/vidio yang sudah dikirim\nNote : Maximal vidio 10 detik!`)
 			    }
 			    break
 
@@ -724,16 +721,16 @@ case prefix+'exif':
 			    var namaPack = q.split('|')[0] ? q.split('|')[0] : q
                 var authorPack = q.split('|')[1] ? q.split('|')[1] : ''
                 exif.create(namaPack, authorPack)
-				reply(`Sukses membuat exif`)
+				replyt(`Sukses membuat exif`)
 				addCmd(command.slice(1), 1, commund)
 			break
 			
         
 //━━━━━━━━━━━━━━━[ STORE MENU ]━━━━━━━━━━━━━━━━━//
         case prefix+'shop': case prefix + 'list':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (db_respon_list.length === 0) return reply(`Belum ada list message di database`)
-            if (!isAlreadyResponListGroup(from, db_respon_list)) return reply(`Belum ada list message yang terdaftar di group ini`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (db_respon_list.length === 0) return replyt(`Belum ada list message di database`)
+            if (!isAlreadyResponListGroup(from, db_respon_list)) return replyt(`Belum ada list message yang terdaftar di group ini`)
             var arr_rows = [];
             for (let x of db_respon_list) {
                 if (x.id === from) {
@@ -755,12 +752,12 @@ case prefix+'exif':
             zaki.sendMessage(from, listMsg, {quoted : troli})
             break
         case prefix+'addlist':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
             var args1 = q.split("@")[0]
             var args2 = q.split("@")[1]                
-            if (!q.includes("@")) return reply(`Gunakan dengan cara ${command} *key@response*\n\n_Contoh_\n\n${command} tes@apa`)
-            if (isAlreadyResponList(from, args1, db_respon_list)) return reply(`List respon dengan key : *${args1}* sudah ada di group ini.`)
+            if (!q.includes("@")) return replyt(`Gunakan dengan cara ${command} *key@response*\n\n_Contoh_\n\n${command} tes@apa`)
+            if (isAlreadyResponList(from, args1, db_respon_list)) return replyt(`List respon dengan key : *${args1}* sudah ada di group ini.`)
             if (isImage || isQuotedImage) {
                 let media = await downloadAndSaveMediaMessage('image', `./sticker/${sender}`)
                 const fd = new FormData();
@@ -771,20 +768,20 @@ case prefix+'exif':
                 }).then(res => res.json())
                     .then((json) => {
                         addResponList(from, args1, args2, true, `https://telegra.ph${json[0].src}`, db_respon_list)
-                        reply(`Berhasil menambah List menu *${args1}*`)
+                        replyt(`Berhasil menambah List menu *${args1}*`)
                         if (fs.existsSync(media)) fs.unlinkSync(media)
                     })
             } else {
                 addResponList(from, args1, args2, false, '-', db_respon_list)
-                reply(`Berhasil menambah List menu : *${args1}*`)
+                replyt(`Berhasil menambah List menu : *${args1}*`)
             }
             break
         case prefix+'dellist':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (db_respon_list.length === 0) return reply(`Belum ada list message di database`)
-            if (!q) return reply(`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} hello`)
-            if (!isAlreadyResponList(from, q, db_respon_list)) return reply(`List respon dengan key *${q}* tidak ada di database!`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (db_respon_list.length === 0) return replyt`Belum ada list message di database`)
+            if (!q) return replyt`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} hello`)
+            if (!isAlreadyResponList(from, q, db_respon_list)) return replyt`List respon dengan key *${q}* tidak ada di database!`)
             delResponList(from, q, db_respon_list)
             reply(`Sukses delete list message dengan key *${q}*`)
             break
