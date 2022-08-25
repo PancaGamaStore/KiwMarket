@@ -663,7 +663,6 @@ break
 case prefix+'ping':
 let timetext =`*Runtime Bot :*\n_${runtime(process.uptime())}_`
 replyt(timetext)
-zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
 break
 			
 			case prefix+'sticker': case prefix+'stiker': case prefix+'s':
@@ -783,15 +782,15 @@ case prefix+'exif':
             if (!q) return replyt`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} hello`)
             if (!isAlreadyResponList(from, q, db_respon_list)) return replyt`List respon dengan key *${q}* tidak ada di database!`)
             delResponList(from, q, db_respon_list)
-            reply(`Sukses delete list message dengan key *${q}*`)
+            replyt(`Sukses delete list message dengan key *${q}*`)
             break
         case prefix+'updatelist': case prefix+'update':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
             var args1 = q.split("@")[0]
             var args2 = q.split("@")[1]
-            if (!q.includes("@")) return reply(`Gunakan dengan cara ${command} *key@response*\n\n_Contoh_\n\n${command} tes@apa`)
-            if (!isAlreadyResponListGroup(from, db_respon_list)) return reply(`Maaf, untuk key *${args1}* belum terdaftar di group ini`)
+            if (!q.includes("@")) return replyt(`Gunakan dengan cara ${command} *key@response*\n\n_Contoh_\n\n${command} tes@apa`)
+            if (!isAlreadyResponListGroup(from, db_respon_list)) return replyt(`Maaf, untuk key *${args1}* belum terdaftar di group ini`)
             if (isImage || isQuotedImage) {
                 let media = await downloadAndSaveMediaMessage('image', `./sticker/${sender}`)
                 const fd = new FormData();
@@ -802,43 +801,43 @@ case prefix+'exif':
                 }).then(res => res.json())
                     .then((json) => {
                         updateResponList(from, args1, args2, true, `https://telegra.ph${json[0].src}`, db_respon_list)
-                        reply(`Berhasil update List menu : *${args1}*`)
+                        replyt(`Berhasil update List menu : *${args1}*`)
                         if (fs.existsSync(media)) fs.unlinkSync(media)
                     })
             } else {
                 updateResponList(from, args1, args2, false, '-', db_respon_list)
-                reply(`Berhasil update List menu : *${args1}*`)
+                replyt(`Berhasil update List menu : *${args1}*`)
             }
             break
         case prefix+'tambah':
-            if (args.length < 3) return reply(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
+            if (args.length < 3) return replyt(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
             var nilai_one = Number(args[1])
             var nilai_two = Number(args[2])
-            reply(`${nilai_one + nilai_two}`)
+            replyt(`${nilai_one + nilai_two}`)
             break
         case prefix+'kurang':
-            if (args.length < 3) return reply(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
+            if (args.length < 3) return replyt(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
             var nilai_one = Number(args[1])
             var nilai_two = Number(args[2])
-            reply(`${nilai_one - nilai_two}`)
+            replyt(`${nilai_one - nilai_two}`)
             break
         case prefix+'kali':
-            if (args.length < 3) return reply(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
+            if (args.length < 3) return replyt(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
             var nilai_one = Number(args[1])
             var nilai_two = Number(args[2])
-            reply(`${nilai_one * nilai_two}`)
+            replyt(`${nilai_one * nilai_two}`)
             break
         case prefix+'bagi':
-            if (args.length < 3) return reply(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
+            if (args.length < 3) return replyt(`Gunakan dengan cara ${command} *angka* *angka*\n\n_Contoh_\n\n${command} 1 2`)
             var nilai_one = Number(args[1])
             var nilai_two = Number(args[2])
-            reply(`${nilai_one / nilai_two}`)
+            replyt(`${nilai_one / nilai_two}`)
             break
         case prefix+'p': case prefix+'proses':
             if (!isGroup) return ('Hanya Dapat Digunakan Gi Group')
             if (!isOwner && !isGroupAdmins) return ('Hanya Bisa Digunakan Oleh Admin')
             if (!isQuotedMsg) return ('Reply Pesanannya!')
-            let proses = `「 *TRANSAKSI PENDING* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM     : ${jam}\n✨ STATUS  : Pending\`\`\`\n\n📝 Catatan :\n${quotedMsg.chats}\n\nPesanan @${quotedMsg.sender.split("@")[0]} sedang di proses!`
+            replyt(`「 *TRANSAKSI PENDING* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM     : ${jam}\n✨ STATUS  : Pending\`\`\`\n\n📝 Catatan :\n${quotedMsg.chats}\n\nPesanan @${quotedMsg.sender.split("@")[0]} sedang di proses!`)
             const getTextP = getTextSetProses(from, set_proses);
             if (getTextP !== undefined) {
                 mentions(getTextP.replace('pesan', quotedMsg.chats).replace('nama', quotedMsg.sender.split("@")[0]).replace('jam', jam).replace('tanggal', tanggal), [quotedMsg.sender], true)
@@ -851,8 +850,8 @@ case prefix+'exif':
             if (!isGroup) return ('Hanya Dapat Digunakan Gi Group')
             if (!isOwner && !isGroupAdmins) return ('Hanya Bisa Digunakan Oleh Admin')
             if (!isQuotedMsg) return ('Reply Pesanannya!')
-            if (args.length == 1) return reply('Masukan Nomor Pelanggan\nContoh: done 62xxx + Reply Catatannya!')
-            let sukses = `「 *TRANSAKSI BERHASIL* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM     : ${jam}\n✨ STATUS  : Berhasil\`\`\`\n\nTerimakasih @${quotedMsg.sender.split("@")[0]} Next Order ya🙏`
+            if (args.length == 1) return replyt('Masukan Nomor Pelanggan\nContoh: done 62xxx + Reply Catatannya!')
+            replyt(`「 *TRANSAKSI BERHASIL* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM     : ${jam}\n✨ STATUS  : Berhasil\`\`\`\n\nTerimakasih @${quotedMsg.sender.split("@")[0]} Next Order ya🙏`)
             const getTextD = getTextSetDone(from, set_done);
             if (getTextD !== undefined) {
                 mentions(getTextD.replace('pesan', quotedMsg.chats).replace('nama', quotedMsg.sender.split("@")[0]).replace('jam', jam).replace('tanggal', tanggal), [quotedMsg.sender], true);
@@ -862,72 +861,72 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
    }
             break
         case prefix+'setproses': case prefix+'setp':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!q) return reply(`Gunakan dengan cara ${command} *teks_p*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
-            if (isSetProses(from, set_proses)) return reply(`Set proses already active`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!q) return replyt(`Gunakan dengan cara ${command} *teks_p*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
+            if (isSetProses(from, set_proses)) return replyt(`Set proses already active`)
             addSetProses(q, from, set_proses)
             reply(`Successfully set proses!`)
             break
         case prefix+'changeproses': case prefix+'changep':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!q) return reply(`Gunakan dengan cara ${command} *teks_p*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!q) return replyt(`Gunakan dengan cara ${command} *teks_p*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
             if (isSetProses(from, set_proses)) {
                 changeSetProses(q, from, set_proses)
-                reply(`Sukses change set proses teks!`)
+                replyt(`Sukses change set proses teks!`)
             } else {
                 addSetProses(q, from, set_proses)
-                reply(`Sukses change set proses teks!`)
+                replyt(`Sukses change set proses teks!`)
             }
             break
         case prefix+'delsetproses': case prefix+'delsetp':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!isSetProses(from, set_proses)) return reply(`Belum ada set proses di sini..`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!isSetProses(from, set_proses)) return replyt(`Belum ada set proses di sini..`)
             removeSetProses(from, set_proses)
-            reply(`Sukses delete set proses`)
+            replyt(`Sukses delete set proses`)
             break
         case prefix+'setdone': case prefix+'setd':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!q) return reply(`Gunakan dengan cara ${command} *teks_d*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
-            if (isSetDone(from, set_done)) return reply(`Set done already active`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!q) return replyt(`Gunakan dengan cara ${command} *teks_d*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
+            if (isSetDone(from, set_done)) return replyt(`Set done already active`)
             addSetDone(q, from, set_done)
-            reply(`Successfully set done!`)
+            replyt(`Successfully set done!`)
             break
         case prefix+'changedone': case prefix+'changed':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!q) return reply(`Gunakan dengan cara ${command} *teks_d*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!q) return replyt(`Gunakan dengan cara ${command} *teks_d*\n\n_Contoh_\n\n${command} pesanan @pesan, tag orang @nama`)
             if (isSetDone(from, set_done)) {
                 changeSetDone(q, from, set_done)
-                reply(`Sukses change set done teks!`)
+                replyt(`Sukses change set done teks!`)
             } else {
                 addSetDone(q, from, set_done)
-                reply(`Sukses change set done teks!`)
+                replyt(`Sukses change set done teks!`)
             }
             break
         case prefix+'delsetdone': case prefix+'delsetd':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!isSetDone(from, set_done)) return reply(`Belum ada set done di sini..`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!isSetDone(from, set_done)) return replyt(`Belum ada set done di sini..`)
             removeSetDone(from, set_done)
-            reply(`Sukses delete set done`)
+            replyt(`Sukses delete set done`)
             break
 
 //━━━━━━━━━━━━━━━[ GROUP MENU ]━━━━━━━━━━━━━━━━━//
         case prefix+'linkgrup': case prefix+'link': case prefix+'linkgc':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-            var url = await zaki.groupInviteCode(from).catch(() => reply(mess.error.api))
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
+            var url = await zaki.groupInviteCode(from).catch(() => replyt(mess.error.api))
             url = 'https://chat.whatsapp.com/'+url
-            reply(url)
+            replyt(url)
             break
         case prefix+'setppgrup': case prefix+'setppgc':
-            if (!isGroup) return reply(mess.OnlyGrup)
-		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-		    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+		    if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+		    if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
             if (isImage || isQuotedImage) {
             var media = await downloadAndSaveMediaMessage('image', `ppgc${from}.jpeg`)
             if (args[1] == '\'panjang\'') {
@@ -948,56 +947,56 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
                     ]
                 })
                 fs.unlinkSync(media)
-            	reply(`Sukses`)
+            	replyt(`Sukses`)
             } else {
                 await zaki.updateProfilePicture(from, { url: media })
                 .then( res => {
-                    reply(`Sukses`)
+                    replyt(`Sukses`)
                     fs.unlinkSync(media)
-                }).catch(() => reply(mess.error.api))
+                }).catch(() => replyt(mess.error.api))
             }
             } else {
-			    reply(`Kirim/balas gambar dengan caption ${command}`)
+			    replyt(`Kirim/balas gambar dengan caption ${command}`)
             }
             break
         case prefix+'setnamegrup': case prefix+'setnamegc':
-            if (!isGroup) return reply(mess.OnlyGrup)
-		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-		    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-            if (args.length < 2) return reply(`Gunakan dengan cara ${command} *text*\n\n_Contoh_\n\n${command} Support ${ownerName}`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+		    if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+		    if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
+            if (args.length < 2) return replyt(`Gunakan dengan cara ${command} *text*\n\n_Contoh_\n\n${command} Support ${ownerName}`)
             await zaki.groupUpdateSubject(from, q)
             .then( res => {
-                reply(`Sukses`)
-            }).catch(() => reply(mess.error.api))
+                replyt(`Sukses`)
+            }).catch(() => replyt(mess.error.api))
             break
         case prefix+'setdesc': case prefix+'setdescription':
-            if (!isGroup) return reply(mess.OnlyGrup)
-		    if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-		    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-            if (args.length < 2) return reply(`Gunakan dengan cara ${command} *text*\n\n_Contoh_\n\n${command} New Description by ${ownerName}`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+		    if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+		    if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
+            if (args.length < 2) return replyt(`Gunakan dengan cara ${command} *text*\n\n_Contoh_\n\n${command} New Description by ${ownerName}`)
             await zaki.groupUpdateDescription(from, q)
             .then( res => {
-                reply(`Sukses`)
-            }).catch(() => reply(mess.error.api))
+                replyt(`Sukses`)
+            }).catch(() => replyt(mess.error.api))
             break
         case prefix+'antilink':
-            if (!isGroup) return reply(mess.OnlyGrup)
-            if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-            if (args.length === 1) return reply(`Pilih enable atau disable`)
+            if (!isGroup) return replyt(mess.OnlyGrup)
+            if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
+            if (!isBotGroupAdmins) return replyt(mess.BotAdmin)
+            if (args.length === 1) return replyt(`Pilih enable atau disable`)
             if (args[1].toLowerCase() === 'enable'){
-                if (isAntiLink) return reply(`Udah aktif`)
+                if (isAntiLink) return replyt(`Udah aktif`)
                 antilink.push(from)
                 fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink, null, 2))
-                reply('Successfully Activate Antilink In This Group')
+                replyt('Successfully Activate Antilink In This Group')
             } else if (args[1].toLowerCase() === 'disable'){
-                if (!isAntiLink) return reply(`Udah nonaktif`)
+                if (!isAntiLink) return replyt(`Udah nonaktif`)
                 let anu = antilink.indexOf(from)
                 antilink.splice(anu, 1)
                 fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink, null, 2))
-                reply('Successfully Disabling Antilink In This Group')
+                replyt('Successfully Disabling Antilink In This Group')
             } else {
-                reply(`Pilih enable atau disable`)
+                replyt(`Pilih enable atau disable`)
             }
             break
         case prefix+'open': case prefix+'buka':
@@ -1115,8 +1114,8 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
             if (!isBotGroupAdmins) return reply(mess.BotAdmin)
             await zaki.groupRevokeInvite(from)
             .then( res => {
-                reply(`Sukses menyetel tautan undangan grup ini`)
-            }).catch(() => reply(mess.error.api))
+                replyt(`Sukses menyetel tautan undangan grup ini`)
+            }).catch(() => replyt(mess.error.api))
             break
         case prefix+'hidetag':
             if (!isGroup) return reply(mess.OnlyGrup)
@@ -1128,8 +1127,8 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
         case prefix+'delete': case prefix+'del': case prefix+'d':
             if (!isGroup) return reply(mess.OnlyGrup)
             if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-            if (!isQuotedMsg) return reply(`Balas chat dari bot yang ingin dihapus`)
-            if (!quotedMsg.fromMe) return reply(`Hanya bisa menghapus chat dari bot`)
+            if (!isQuotedMsg) return replyt(`Balas chat dari bot yang ingin dihapus`)
+            if (!quotedMsg.fromMe) return replyt(`Hanya bisa menghapus chat dari bot`)
             zaki.sendMessage(from, { delete: { fromMe: true, id: quotedMsg.id, remoteJid: from }})
             break
         // Owners Menu
@@ -1141,9 +1140,9 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
             reply(`Sukses membuat exif`)
             break
         case prefix+'join':
-            if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
-            if (args.length < 2) return reply(`Kirim perintah ${command} _linkgrup_`)
-            if (!isUrl(args[1])) return reply(mess.error.Iv)
+            if (!isOwner && !fromMe) return replyt(mess.OnlyOwner)
+            if (args.length < 2) return replyt(`Kirim perintah ${command} _linkgrup_`)
+            if (!isUrl(args[1])) return replyt(mess.error.Iv)
             var url = args[1]
             url = url.split('https://chat.whatsapp.com/')[1]
             var data = await zaki.groupAcceptInvite(url)
@@ -1157,13 +1156,13 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
         case prefix+'self':{
             if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
             zaki.mode = 'self'
-            reply('Berhasil berubah ke mode self')
+            replyt('Berhasil berubah ke mode self')
             }
             break
         case prefix+'publik': case prefix+'public':{
             if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
             zaki.mode = 'public'
-            reply('Berhasil berubah ke mode public')
+            replyt('Berhasil berubah ke mode public')
             }
             break
         case prefix+'setpp': case prefix+'setppbot':
@@ -1188,14 +1187,14 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
 					    ]
                     })
 					fs.unlinkSync(media)
-					reply(`Sukses`)
+					replyt(`Sukses`)
 				} else {
 					var data = await zaki.updateProfilePicture(botNumber, { url: media })
 			        fs.unlinkSync(media)
 				    reply(`Sukses`)
 				}
             } else {
-                reply(`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
+                replyt(`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
             }
             break
         case prefix+'broadcast': case prefix+'bc':
@@ -1207,13 +1206,13 @@ await zaki.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses });
                 zaki.sendMessage(i.id, { text: teks })
                 await sleep(1000)
             }
-            reply(`Sukses mengirim pesan siaran kepada ${data.length} chat`)
+            replyt(`Sukses mengirim pesan siaran kepada ${data.length} chat`)
             break
 case prefix + 'delrespon':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-                if (!args[1]) return reply(`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} tes`)
-                if (!checkResponGroup(from, args[1], db_respon_group)) return reply(`key *${args[1]}* tidak ada didatabase..`)
+                if (!args[1]) return replyt(`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} tes`)
+                if (!checkResponGroup(from, args[1], db_respon_group)) return replyt(`key *${args[1]}* tidak ada didatabase..`)
 
                 try {
                     deleteResponGroup(from, args[1], db_respon_group)
@@ -1266,15 +1265,15 @@ if (isCmd) {
     if (args[0].length > 1) {
         var detect = await Dym(command.split(prefix)[1], listCmd)
         if (detect !== null) {
-            reply(`Mungkin yang anda maksud adalah ${prefix + detect} abaikan jika salah!`)
+            replyt(`Mungkin yang anda maksud adalah ${prefix + detect} abaikan jika salah!`)
         }
         if (!isGroup && detect === null) {
-            reply(`Maaf kak fitur ${command} tidak terdaftar di list ${prefix+'menu'}`)
+            replyt(`Maaf kak fitur ${command} tidak terdaftar di list ${prefix+'menu'}`)
         }
     } else {
         var detect2 = await Dym(args[1], listCmd)
         if (!isGroup && detect2 !== null) {
-            reply(`Pastikan antara simbol/prefix jangan dipisah, contoh ${prefix+args[1]}`)
+            replyt(`Pastikan antara simbol/prefix jangan dipisah, contoh ${prefix+args[1]}`)
         }
 	}
 }
