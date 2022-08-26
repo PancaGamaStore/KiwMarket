@@ -244,7 +244,7 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         }
         const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 50, status: 200, thumbnail: fakeimage, surface: 200, orderTitle: 'zaki', sellerJid: '0@s.whatsapp.net'} } }
         const replyt = (teks) => {
-        	return zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: troli })
+        	return zaki.sendMessage(from, { text: teks, mentions: parseMention(teks) }, { quoted: fkontak })
         }
         const fkontak = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./media/logo.jpg')}}}
         const textImg = (teks) => {
@@ -555,7 +555,7 @@ const wiwik = `*MAIN MENU*
         
         case prefix+'owner': case prefix+'dev':
             sendContact(from, ownerNumber.split('@s.whatsapp.net')[0], ownerName, troli)
-           .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: troli}))
+           .then((res) => zaki.sendMessage(from, { text: 'Itu Nomor Owner Kak.' }, {quoted: fkontak}))
             break
 			
 	case 'bot': case prefix+'bot':
@@ -748,7 +748,7 @@ case prefix+'exif':
                     title: groupName, rows: arr_rows
                 }]
             }
-            zaki.sendMessage(from, listMsg, {quoted : troli})
+            zaki.sendMessage(from, listMsg, {quoted : fkontak})
             break
         case prefix+'addlist':
             if (!isGroup) return replyt(mess.OnlyGrup)
