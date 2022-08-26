@@ -778,7 +778,7 @@ case prefix+'exif':
         case prefix+'dellist':
             if (!isGroup) return replyt(mess.OnlyGrup)
             if (!isGroupAdmins && !isOwner) return replyt(mess.GrupAdmin)
-            if (db_respon_list.length === 0) return replyt`Belum ada list message di database`)
+            if (db_respon_list.length === 0) return replyt(`Belum ada list message di database`)
             if (!q) return replyt`Gunakan dengan cara ${command} *key*\n\n_Contoh_\n\n${command} hello`)
             if (!isAlreadyResponList(from, q, db_respon_list)) return replyt`List respon dengan key *${q}* tidak ada di database!`)
             delResponList(from, q, db_respon_list)
