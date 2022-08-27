@@ -589,7 +589,7 @@ break
 if (!isOwner) return reply('*Fitur ini hanya bisa digunakan oleh owner bot!*')
       if (!isOwner && !fromMe) return replyt(`Command ${command} Hanya Khusus Owner`)
       if (args.length < 1) return replyt(`Penggunaan :\n*${prefix}addsewa 15k 30d*/n*Ini Hanya Contoh*`)
-      _sewa.addSewaGroup(from, args[1], sewa)
+      _sewa.addSewaGroup(from, args[0], sewa)
       replyt(`Success Add Sewa`)
        break
 
