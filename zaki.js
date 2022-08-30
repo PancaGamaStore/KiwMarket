@@ -301,7 +301,7 @@ module.exports = async(zaki, msg, m, setting, store, welcome, left, set_welcome_
         }
 
         const buttonsDefault = [
-        	{ urlButton: { displayText: `Group Official`, url: `${group}` } }, 	
+        	{ urlButton: { displayText: `Social Media`, url: `${store}` } }, 	
         ]
 
         // Anti Link
