@@ -563,26 +563,20 @@ const wiwik = `*MAIN MENU*
 			break
 			
 	case prefix+'sewa':
-replyt(`*➛ JASA BOT BY JO OFFICIAL 🏷️*
-_❏ Jadibot : 30k/Bulan_
-_❏ Script Bot : 55k-100k_
-_❏ Sewa Bot : 10K/Bulan_
+replyt(`*JASA BOT BY KIW MARKET*
 
-➛ *Keuntungan Jadi Bot 🛡️*
-_⊳ Tinggal Scan_
-_⊳ Validasi ID Game_
-_⊳ Online 24 Jam_
-_⊳ Fast Respon_
-_⊳ Data Mati Tetep Online_
-_⊳ Bot No Internet_
-_⊳ Anti Delay_
-_⊳ Hemat Kuota_
-_⊳ Bisa Req NamaBot & Owner_
+Sewa Bot : 7K/Bulan
+Sewa Bot : 20/3 Bulan
+
+_➥ Hidetag/Tag All on_
+_➥ Online 24 Jam_
+_➥ Cocok untuk store_
 
 *Pembayaran  Via 💳*
-_Dana/Bank/Qris_
+_E-wallet/Bank/Qris_
 
-Hubungi Admin [ wa.me/6287734276016 ]`)
+Jika Minat Hubungi Admin
+[ wa.me/62895613194422 ]`)
 break
 			
 		case prefix+'addsewa':
